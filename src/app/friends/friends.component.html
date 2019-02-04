@@ -1,10 +1,18 @@
-<div>
-  <label>name:
-    <input [(ngModel)]="friend.name" placeholder="name">
-  </label>
+<h2>My Friends</h2>
+<ul class="friends">
+  <li *ngFor="let friend of friends"
+    [class.selected]="friend == selectedFriend"
+    (click)="onSelect(friend)">
+    <span class = "badge">{{friend.id}}</span> {{friend.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedFriend">
+  <h2>{{ selectedFriend.name | uppercase }} Details </h2>
+  <div><span>id: </span> {{selectedFriend.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedFriend.name" placeholder="name">
+    </label>
+  </div>
 </div>
-
-
-<h2>{{friend.name}} Details</h2>
-<div><span>id: </span> {{friend.id}}</div>
-<div><span>name: </span> {{friend.name | uppercase}}</div>
