@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsComponent implements OnInit {
 
+  friend: Friend = {
+    id: 1,
+    name: 'Ma',
+  }
+
   constructor() { }
 
   ngOnInit() {
   }
-
-  friend = 'Ma';
 
 }
