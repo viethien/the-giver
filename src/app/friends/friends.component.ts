@@ -12,4 +12,6 @@ export class FriendsComponent implements OnInit {
   ngOnInit() {
   }
 
+  friend = 'Ma';
+
 }
