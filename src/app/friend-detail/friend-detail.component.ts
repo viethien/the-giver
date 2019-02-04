@@ -8,9 +8,10 @@ import { Friend } from '../friend';
   styleUrls: ['./friend-detail.component.scss']
 })
 
-@Input() friend: Friend;
+
 
 export class FriendDetailComponent implements OnInit {
+  @Input() friend: Friend;
 
   constructor() { }
 
