@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Friend } from '../friend';
+import { FRIENDS } from '../mock-friends';
 
 @Component({
   selector: 'app-friends',
@@ -8,10 +9,7 @@ import { Friend } from '../friend';
 })
 export class FriendsComponent implements OnInit {
 
-  friend: Friend = {
-    id: 1,
-    name: 'Ma',
-  }
+  friends = FRIENDS;
 
   constructor() { }
 
