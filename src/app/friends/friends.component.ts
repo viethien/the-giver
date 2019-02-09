@@ -18,7 +18,8 @@ export class FriendsComponent implements OnInit {
   }
 
   getFriends(): void {
-    this.friends = this.friendService.getFriends();
+    this.friendService.getFriends()
+        .subscribe(friends => this.friends = friends);
   }
 
   constructor(private friendService: FriendService) { }
