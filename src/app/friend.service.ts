@@ -11,6 +11,7 @@ import { MessageService } from './message.service';
 export class FriendService {
 
   getFriends(): Observable<Friend[]> {
+    this.messageService.add('FriendService: fetched friends');
     return of(FRIENDS);
   }
 
