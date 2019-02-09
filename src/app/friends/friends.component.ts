@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Friend } from '../friend';
-import { FRIENDS } from '../mock-friends';
+import { FriendService } from '../friend.service';
 
 @Component({
   selector: 'app-friends',
@@ -9,16 +9,22 @@ import { FRIENDS } from '../mock-friends';
 })
 export class FriendsComponent implements OnInit {
 
-  friends = FRIENDS;
+  friends: Friend[];
 
   selectedFriend: Friend;
+
   onSelect(friend: Friend): void {
     this.selectedFriend = friend;
   }
 
-  constructor() { }
+  getFriends(): void {
+    this.friends = this.friendService.getFriends();
+  }
+
+  constructor(private friendService: FriendService) { }
 
   ngOnInit() {
+    this.getFriends();
   }
 
 }
