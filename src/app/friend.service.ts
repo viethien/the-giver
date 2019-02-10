@@ -15,5 +15,11 @@ export class FriendService {
     return of(FRIENDS);
   }
 
+  getFriend(id: number): Observable<Friend> {
+    //todo: send message after fetching the Hero
+    this.messageService.add(`FriendService: fetched friend id=${id}`);
+    return of(FRIENDS.find(friend => friend.id === id));
+  }
+
   constructor(private messageService: MessageService) { }
 }
