@@ -1,6 +1,7 @@
 <h3>Top Friends</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let friend of friends" class="col-1-4>">
+  <a *ngFor="let friend of friends" class="col-1-4>"
+    routerLink="/detail/{{friend.id}}">
     <div class="module friend">
       <h4>{{friend.name}}</h4>
     </div>
