@@ -1,4 +1,4 @@
-/* FriendsComponent's private CSS styles */
+/* Friends Component's private CSS styles */
 .selected {
   background-color: #CFD8DC !important;
   color: white;
@@ -26,6 +26,16 @@
     color: #607D8B;
     background-color: #DDD;
     left: .1em;
+  }
+  a{
+    color: #888;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+    :hover {
+      color: #607D8B
+    }
   }
   .text {
     position: relative;
