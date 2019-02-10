@@ -11,12 +11,6 @@ export class FriendsComponent implements OnInit {
 
   friends: Friend[];
 
-  selectedFriend: Friend;
-
-  onSelect(friend: Friend): void {
-    this.selectedFriend = friend;
-  }
-
   getFriends(): void {
     this.friendService.getFriends()
         .subscribe(friends => this.friends = friends);
