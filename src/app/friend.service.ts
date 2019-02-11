@@ -6,6 +6,10 @@ import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,12 +48,16 @@ export class FriendService {
   }
 
   updateFriend(friend: Friend): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
     return this.http.put(this.friendsUrl, friend, httpOptions).pipe(
       tap(_ => this.log(`updated friend id=${friend.id}`)),
       catchError(this.handleError<any>(`updateFriend`))
+    );
+  }
+
+  addFriend(friend: Friend): Observable<Friend> {
+    return this.http.post<Friend>(this.friendsUrl, friend, httpOptions).pipe(
+      tap((newFriend: Friend) => this.log(`added friend w/ id=${newFriend.id}`)),
+      catchError(this.handleError<Friend>(`addFriend`))
     );
   }
 
