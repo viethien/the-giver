@@ -25,6 +25,11 @@ export class FriendsComponent implements OnInit {
         });
   }
 
+  delete(friend: Friend): void {
+    this.friends = this.friends.filter(h => h !== friend);
+    this.friendsService.deleteFriend(friend).subscribe();
+  }
+
   constructor(private friendService: FriendService) { }
 
   ngOnInit() {
