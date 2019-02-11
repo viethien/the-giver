@@ -16,6 +16,15 @@ export class FriendsComponent implements OnInit {
         .subscribe(friends => this.friends = friends);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if(!name) { return; }
+    this.friendService.addFriend({ name } as Friend)
+        .subscribe(friend => {
+          this.friends.push(friend);
+        });
+  }
+
   constructor(private friendService: FriendService) { }
 
   ngOnInit() {
