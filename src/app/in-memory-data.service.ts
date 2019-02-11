@@ -22,7 +22,6 @@ export class InMemoryDataService implements InMemoryDbService {
     return { friends };
   }
 
-  //friend id + 1
   genId(friends: Friend[]): number {
     return friends.length > 0 ? Math.max(...friends.map(friend => friend.id)) + 1 : 11;
   }

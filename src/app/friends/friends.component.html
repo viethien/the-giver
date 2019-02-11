@@ -14,6 +14,10 @@
     <a routerLink="/detail/{{friend.id}}">
       <span class = "badge">{{friend.id}}</span> {{friend.name}}
     </a>
+    <button class="delete" title="delete friend"
+      (click)="delete(friend)">
+      x
+    </button>
   </li>
 </ul>
 
