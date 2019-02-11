@@ -11,6 +11,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 
 export class FriendService {
+  //url to web api and friends object
+  private friendsUrl = 'api/friends';
+
 
   getFriends(): Observable<Friend[]> {
     //this.messageService.add('FriendService: fetched friends');
@@ -33,19 +36,26 @@ export class FriendService {
   getFriend(id: number): Observable<Friend> {
     //todo: send message after fetching the Hero
     //this.messageService.add(`FriendService: fetched friend id=${id}`);
-    const url = `${this.friendsUrl}/${id}`
+    const url = `${this.friendsUrl}/${id}`;
     return this.http.get<Friend>(url).pipe(
       tap(_ => this.log(`fetched friend id=${id}`)),
       catchError(this.handleError<Friend>(`getFriend id=${id}`))
     );
   }
 
+  updateFriend(friend: Friend): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.put(this.friendsUrl, friend, httpOptions).pipe(
+      tap(_ => this.log(`updated friend id=${friend.id}`)),
+      catchError(this.handleError<any>(`updateFriend`))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add(`FriendService: ${message}`);
   }
-
-  //url to web api and friends object
-  private friendsUrl = 'api/friends';
 
   constructor(
     private http: HttpClient,
