@@ -1,4 +1,14 @@
 <h2>My Friends</h2>
+
+<div>
+  <label>Friend name:
+    <input #friendName />
+  </label>
+  <button (click)="add(friendName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
 <ul class="friends">
   <li *ngFor="let friend of friends">
     <a routerLink="/detail/{{friend.id}}">
