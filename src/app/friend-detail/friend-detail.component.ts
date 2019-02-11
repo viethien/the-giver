@@ -39,4 +39,9 @@ export class FriendDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.friendService.updateFriend(this.friend)
+        .subscribe(() => this.goBack));
+  }
+
 }
