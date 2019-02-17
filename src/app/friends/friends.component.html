@@ -5,7 +5,9 @@
     <input #friendName />
   </label>
   <label>Friend birthday:
-    <input #friendBday />
+    <input #friendBday matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </label>
   <button (click)="add(friendName.value, friendBday.value); friendName.value=''; friendBday.value=''">
     add
