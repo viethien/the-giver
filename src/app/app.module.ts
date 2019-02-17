@@ -12,6 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InMemoryDataService } from './in-memory-data.service';
 import { FriendSearchComponent } from './friend-search/friend-search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,14 @@ import { FriendSearchComponent } from './friend-search/friend-search.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false },
-    )
+    ),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
