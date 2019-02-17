@@ -61,6 +61,26 @@ export class FriendService {
     );
   }
 
+  searchFriends(term: string): Observable<Friend[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Friend[]>(`${this.friendsUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found friends matching "${term}"`)),
+      catchError(this.handleError<Friend[]>('searchFriends', []))
+    );
+  }
+
+  deleteFriend(friend: Friend | number): Observable<Friend> {
+    const id = typeof friend === 'number' ? friend : friend.id;
+    const url = `${this.friendsUrl}/${id}`;
+
+    return this.http.delete<Friend>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted friend id=${id}`)),
+      catchError(this.handleError<Friend>('deleteFriend'))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add(`FriendService: ${message}`);
   }
