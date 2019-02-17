@@ -16,10 +16,11 @@ export class FriendsComponent implements OnInit {
         .subscribe(friends => this.friends = friends);
   }
 
-  add(name: string): void {
+  add(name: string, bday: string): void {
     name = name.trim();
-    if(!name) { return; }
-    this.friendService.addFriend({ name } as Friend)
+    bday = bday.trim();
+    if(!name || !bday) { return; }
+    this.friendService.addFriend({ name, bday } as Friend)
         .subscribe(friend => {
           this.friends.push(friend);
         });
