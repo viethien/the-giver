@@ -11,6 +11,7 @@ import { FriendDetailComponent } from './friend-detail/friend-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InMemoryDataService } from './in-memory-data.service';
+import { FriendSearchComponent } from './friend-search/friend-search.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     FriendDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    FriendSearchComponent,
   ],
   imports: [
     BrowserModule,
