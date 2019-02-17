@@ -4,7 +4,10 @@
   <label>Friend name:
     <input #friendName />
   </label>
-  <button (click)="add(friendName.value); friendName.value=''">
+  <label>Friend birthday:
+    <input #friendBday />
+  </label>
+  <button (click)="add(friendName.value, friendBday.value); friendName.value=''; friendBday.value=''">
     add
   </button>
 </div>
