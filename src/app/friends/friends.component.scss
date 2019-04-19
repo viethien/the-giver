@@ -27,13 +27,13 @@
     background-color: #DDD;
     left: .1em;
   }
-  a{
+  a {
     color: #888;
     text-decoration: none;
     position: relative;
     display: block;
     width: 250px;
-    :hover {
+    &:hover {
       color: #607D8B
     }
   }
