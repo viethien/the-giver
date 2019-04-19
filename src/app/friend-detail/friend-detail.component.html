@@ -2,14 +2,35 @@
   <h2>{{ friend.name | uppercase }} Details </h2>
   <div><span>id: </span> {{friend.id}}</div>
   <div>
-    <label>name:
+    <label>Name:
       <input [(ngModel)]="friend.name" placeholder="name">
     </label>
     <br>
-    <label>birthday:
-      <input [(ngModel)]="friend.bday" placeholder="bday">
+    <label>Birthday:
+        <input [(ngModel)]="friend.bday" matInput [matDatepicker]="picker" placeholder="Choose a date" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker
+                        (monthSelected)="chosenMonthHandler($event, picker)"
+                        (daySelected)="chosenDayHandler($event, picker)"></mat-datepicker>
     </label>
-  </div>
+    <br>
+    <label>Gift Ideas:
+      <input id="gift-input" placeholder="gift">
+      <!-- <p [(ngModel)]="friend.gifts" ngDefaultControl>{{friend.gifts}}</p> -->
+      <p ng-repeat="x in friend.gifts">{{x}}</p>
+      <ul>
+        <li *ngFor="let friend of friend.gifts">
+          {{ friend }}
+        </li>
+      </ul>
+      <button (click)="addGift()">add gift</button>
+    </label>
+    <!-- <button (click)="addGift()">Add Gift</button> -->
+    <mat-form-field class="demo-full-width" appearance="outline">
+      <mat-label>Enter here your text here with few links to preview ;)</mat-label>
+      <textarea matInput matTextareaAutosize matLinkPreview minRows="6"></textarea>
+      <mat-link-preview-container [multiple]="true"></mat-link-preview-container>
+    </mat-form-field>
 </div>
 
 <button (click)="goBack()">go back</button>
