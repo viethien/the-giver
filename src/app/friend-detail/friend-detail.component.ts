@@ -16,6 +16,7 @@ import { FriendService } from '../friend.service';
 export class FriendDetailComponent implements OnInit {
   @Input() friend: Friend;
 
+
   constructor(
     private route: ActivatedRoute,
     private friendService: FriendService,
@@ -24,6 +25,7 @@ export class FriendDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFriend();
+
   }
 
   getFriend(): void {
@@ -42,6 +44,14 @@ export class FriendDetailComponent implements OnInit {
   save(): void {
     this.friendService.updateFriend(this.friend)
         .subscribe(() => this.goBack());
+  }
+
+  addGift(): void {
+    var giftinput = (<HTMLInputElement> document.getElementById("gift-input")).value;
+    var gifts = this.friend.gifts;
+    console.log(typeof(this.friend.gifts));
+    console.log(this.friend.gifts);
+    gifts.push(giftinput);
   }
 
 }
