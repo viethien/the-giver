@@ -7,6 +7,7 @@ import { FriendService } from '../friend.service';
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.css']
 })
+
 export class FriendsComponent implements OnInit {
 
   friends: Friend[];
@@ -16,9 +17,9 @@ export class FriendsComponent implements OnInit {
         .subscribe(friends => this.friends = friends);
   }
 
-  add(name: string, bday: string): void {
+  add(name: string, bday: Date): void {
     name = name.trim();
-    bday = bday.trim();
+    bday = bday;
     if(!name || !bday) { return; }
     this.friendService.addFriend({ name, bday } as Friend)
         .subscribe(friend => {

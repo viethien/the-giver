@@ -13,7 +13,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InMemoryDataService } from './in-memory-data.service';
 import { FriendSearchComponent } from './friend-search/friend-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
+import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
+// import { StorageServiceModule } from ‘ngx-webstorage-service’;
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,11 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatLinkPreviewModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    // StorageServiceModule,
   ],
   providers: [
     MatDatepickerModule,
@@ -42,3 +51,4 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+export class ViewsModule { }

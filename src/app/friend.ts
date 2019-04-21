@@ -1,5 +1,6 @@
 export class Friend {
   id: number;
   name: string;
-  bday: string;
+  bday: Date;
+  gifts: string[] = [];
 }

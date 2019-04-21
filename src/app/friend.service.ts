@@ -41,6 +41,9 @@ export class FriendService {
     //todo: send message after fetching the Hero
     //this.messageService.add(`FriendService: fetched friend id=${id}`);
     const url = `${this.friendsUrl}/${id}`;
+    console.log(this.http.get<Friend>(url).pipe(
+      tap(_ => this.log(`fetched friend id=${id}`)),
+      catchError(this.handleError<Friend>(`getFriend id=${id}`))));
     return this.http.get<Friend>(url).pipe(
       tap(_ => this.log(`fetched friend id=${id}`)),
       catchError(this.handleError<Friend>(`getFriend id=${id}`))

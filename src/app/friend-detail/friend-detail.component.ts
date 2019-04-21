@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import {FormControl} from '@angular/forms';
 
 import { Friend } from '../friend';
 import { FriendService } from '../friend.service';
@@ -12,10 +13,8 @@ import { FriendService } from '../friend.service';
 })
 
 
-
 export class FriendDetailComponent implements OnInit {
   @Input() friend: Friend;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +33,11 @@ export class FriendDetailComponent implements OnInit {
     //+ operater converts string to a number - don't forget route parameters are always strings
     const id = +this.route.snapshot.paramMap.get('id');
     this.friendService.getFriend(id)
-        .subscribe(friend => this.friend = friend);
+        .subscribe(friend => {
+          this.friend = friend;
+          this.friend.bday = new Date(this.friend.bday);
+          console.log(this.friend);
+        });
   }
 
   goBack(): void {
@@ -52,6 +55,9 @@ export class FriendDetailComponent implements OnInit {
     console.log(typeof(this.friend.gifts));
     console.log(this.friend.gifts);
     gifts.push(giftinput);
+    console.log(typeof(this.friend.bday));
+    console.log(this.friend);
+
   }
 
 }

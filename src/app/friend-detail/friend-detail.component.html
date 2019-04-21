@@ -7,11 +7,11 @@
     </label>
     <br>
     <label>Birthday:
-        <input [(ngModel)]="friend.bday" matInput [matDatepicker]="picker" placeholder="Choose a date" >
+      <mat-form-field>
+        <input [(ngModel)]="friend.bday" required matInput [matDatepicker]="picker" placeholder="birthday" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker
-                        (monthSelected)="chosenMonthHandler($event, picker)"
-                        (daySelected)="chosenDayHandler($event, picker)"></mat-datepicker>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </label>
     <br>
     <label>Gift Ideas:
@@ -26,6 +26,7 @@
       <button (click)="addGift()">add gift</button>
     </label>
     <!-- <button (click)="addGift()">Add Gift</button> -->
+    <br>
     <mat-form-field class="demo-full-width" appearance="outline">
       <mat-label>Enter here your text here with few links to preview ;)</mat-label>
       <textarea matInput matTextareaAutosize matLinkPreview minRows="6"></textarea>
